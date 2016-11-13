@@ -7,22 +7,35 @@
   <title>Virtual DOM test</title>
 </head>
 <body>
+  <div id="root"></div>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script type="text/babel">
-  /** @jsx createElement */
+    /** @jsx createVirtualNode */
+    function createVirtualNode(type, props, ...children) {
+      return { type, props, children };
+    }
 
-  function createElement(type, props, ...children) {
-    return { type, props, children };
-  }
+    function createElement(node) {
+       if(typeof node === 'string') {
+           return document.createTextNode(node);
+       }
 
-  const a = (
-    <ul class="list">
-      <li>item 1</li>
-      <li>item 2</li>
-    </ul>
-  );
+       const $element = document.createElement(node.type);
+       node.children.map(createElement)
+                    .forEach($element.appendChild.bind($element));
 
-  console.log(a);
+       return $element;
+    }
+
+    const a = (
+      <ul class="list">
+        <li>item 1</li>
+        <li>item 2</li>
+      </ul>
+    );
+
+    const $root = document.getElementById('root');
+    $root.appendChild(createElement(a));
 
   </script>
 </body>
