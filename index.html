@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Virtual DOM test</title>
+</head>
+<body>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+  /** @jsx createElement */
+
+  function createElement(type, props, ...children) {
+    return { type, props, children };
+  }
+
+  const a = (
+    <ul class="list">
+      <li>item 1</li>
+      <li>item 2</li>
+    </ul>
+  );
+
+  console.log(a);
+
+  </script>
+</body>
+</html>
