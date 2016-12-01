@@ -64,8 +64,7 @@
     const dom2 = (
       <ul class="list">
         <li>item 1</li>
-        <li>item 2</li>
-        <li>item 3</li>
+        <li>some change</li>
       </ul>
     );
     const $root = document.getElementById('root');
@@ -74,7 +73,7 @@
     updateElement($root, dom1);
 
     $button.addEventListener('click', () => {
-      updateElement($root, dom1, dom2);
+      updateElement($root, dom2, dom1);
     });
   </script>
 </body>
