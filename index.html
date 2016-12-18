@@ -57,7 +57,18 @@
     }
 
     function setProperty(target, name, value) {
-      target.setAttribute(name, value);
+      if (isCustomProperty){
+          return;
+      }
+      else if (name === 'classname') {
+          target.setAttribute('class', value);
+      }
+      else if (typeof value === 'boolean') {
+          setBooleanProperty(target, name, value);
+      }
+      else {
+          target.setAttribute(name, value);
+      }
     }
 
     function setPropertys(target, props) {
@@ -66,11 +77,28 @@
       })
     }
 
+    function setBooleanProperty(target, name, value) {
+       if (value) {
+          target.setAttribute(name, value);
+          target[name] = true;
+       }
+       else {
+          target[name] = false;
+       }
+    }
+
+    function isCustomProperty (name) {
+       return false;
+    }
+
     const dom1 = (
-      <ul class="list">
-        <li>item 1</li>
-        <li>item 2</li>
-      </ul>
+        <ul style="list-style: none;">
+            <li className="item">item 1</li>
+            <li className="item">
+              <input type="checkbox" checked={true} />
+              <input type="text" disabled={false} />
+            </li>
+        </ul>
     );
 
     const dom2 = (
