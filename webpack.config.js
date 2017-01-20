@@ -20,6 +20,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: '/dist/',
     filename: 'bundle.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'this'
   }
 }
