@@ -2,8 +2,8 @@
 function createVirtualNode(type, props, ...children) {
     return { type, props: props || {}, children };
 }
-//TODO 1 all js delete from html doc
-//TODO 2 add update element if element has Event
+//TODO change structure code
+
 function createElement(node) {
    if (typeof node === 'string') {
        return document.createTextNode(node);
