@@ -1,4 +1,4 @@
-function setProperty(target, name, value) {
+export const setProperty = (target, name, value) => {
     if (isCustomProperty(name)){
         return;
     }
@@ -13,7 +13,7 @@ function setProperty(target, name, value) {
     }
 }
 
-function removeProperty(target, name, value) {
+export const removeProperty = (target, name, value) => {
   if (isCustomProperty(name)){
       return;
   }
@@ -28,13 +28,13 @@ function removeProperty(target, name, value) {
   }
 }
 
-function setPropertys(target, props) {
+export const setPropertys = (target, props) => {
     Object.keys(props).forEach(name => {
        setProperty(target, name, props[name]);
     })
 }
 
-function updateProperty(target, name, newValue, oldValue) {
+export const updateProperty = (target, name, newValue, oldValue) => {
   if(!newValue) {
     removeProperty(target, name, oldValue);
   }
@@ -43,7 +43,7 @@ function updateProperty(target, name, newValue, oldValue) {
   }
 }
 
-function updatePropertys(target, newProps, oldProps = {}) {
+export const updatePropertys = (target, newProps, oldProps = {}) => {
   const props = Object.assign({}, newProps, oldProps);
 
   Object.keys(props).forEach(name => {
@@ -51,7 +51,7 @@ function updatePropertys(target, newProps, oldProps = {}) {
   })
 }
 
-function setBooleanProperty(target, name, value) {
+export const setBooleanProperty = (target, name, value) => {
    if (value) {
       target.setAttribute(name, value);
       target[name] = true;
@@ -61,7 +61,7 @@ function setBooleanProperty(target, name, value) {
    }
 }
 
-function removeBooleanProperty(target, name) {
+export const removeBooleanProperty = (target, name) => {
    target.removeAttribute(name);
    target[name] = false;
 }
