@@ -1,4 +1,17 @@
-export const setProperty = (target, name, value) => {
+function isEventProps (name) {
+    return /^on/.test(name);
+}
+
+function isCustomProperty (name) {
+    return isEventProps(name) || name === 'forceUpdate';
+}
+
+
+function extractEventName (name) {
+    return name.slice(2).toLowerCase();
+}
+
+const setProperty = (target, name, value) => {
     if (isCustomProperty(name)){
         return;
     }
@@ -11,9 +24,9 @@ export const setProperty = (target, name, value) => {
     else {
         target.setAttribute(name, value);
     }
-}
+};
 
-export const removeProperty = (target, name, value) => {
+const removeProperty = (target, name, value) => {
   if (isCustomProperty(name)){
       return;
   }
@@ -26,32 +39,32 @@ export const removeProperty = (target, name, value) => {
   else {
       target.removeAttribute(name, value);
   }
-}
+};
 
 export const setPropertys = (target, props) => {
     Object.keys(props).forEach(name => {
        setProperty(target, name, props[name]);
     })
-}
+};
 
-export const updateProperty = (target, name, newValue, oldValue) => {
+const updateProperty = (target, name, newValue, oldValue) => {
   if(!newValue) {
     removeProperty(target, name, oldValue);
   }
   else if (!oldValue || newValue !== oldValue) {
     setProperty(target, name, newValue);
   }
-}
+};
 
-export const updatePropertys = (target, newProps, oldProps = {}) => {
+export const updateProperties = (target, newProps, oldProps = {}) => {
   const props = Object.assign({}, newProps, oldProps);
 
   Object.keys(props).forEach(name => {
     updateProperty(target, name, newProps[name], oldProps[name]);
   })
-}
+};
 
-export const setBooleanProperty = (target, name, value) => {
+const setBooleanProperty = (target, name, value) => {
    if (value) {
       target.setAttribute(name, value);
       target[name] = true;
@@ -59,9 +72,17 @@ export const setBooleanProperty = (target, name, value) => {
    else {
       target[name] = false;
    }
-}
+};
 
-export const removeBooleanProperty = (target, name) => {
+const removeBooleanProperty = (target, name) => {
    target.removeAttribute(name);
    target[name] = false;
-}
+};
+
+const addEventListeners = (target, props) => {
+    Object.keys(props).forEach(name => {
+        if (isEventProps(name)) {
+            target.addEventListener(extractEventName(name), props[name]);
+        }
+    });
+};
