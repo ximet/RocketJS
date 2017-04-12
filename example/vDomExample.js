@@ -1,8 +1,8 @@
-import { createElement, updateElement } from '../src/addEditElementService.js'
+import { createElement, updateElement } from '../src/addEditElementService.js';
+import { createVirtualNode } from '../src/vdom.js';
+
 /** @jsx createVirtualNode */
-function createVirtualNode(type, props, ...children) {
-    return { type, props: props || {}, children };
-}
+
 
 const dom1 = (
     <ul style="list-style: none;">
