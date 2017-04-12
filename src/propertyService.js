@@ -79,7 +79,7 @@ const removeBooleanProperty = (target, name) => {
    target[name] = false;
 };
 
-const addEventListeners = (target, props) => {
+export const addEventListeners = (target, props) => {
     Object.keys(props).forEach(name => {
         if (isEventProps(name)) {
             target.addEventListener(extractEventName(name), props[name]);
