@@ -1,6 +1,6 @@
 import { setPropertys, addEventListeners } from './propertyService.js'
 
-const createElementFromVDOM = (virtualNode) => {
+export const createElementFromVDOM = (virtualNode) => {
     let element = null;
 
     if (typeof virtualNode === 'string') {
