@@ -1,6 +1,10 @@
 # Custom Virtual DOM
 
 ## TODO: 
-      1. Need reconstruct source code
-      2. Add new functionality
-      3. Improve perfomance VDOM
+      
+      Task:
+      - [ ] Update Architecture
+      - [ ] Need reconstruct source code
+      - [ ] Add new functionality
+      - [ ] Check perfomance 
+      - [ ] Test all code
