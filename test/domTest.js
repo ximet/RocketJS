@@ -1,4 +1,5 @@
-import { createVirtualNode, createElementFromVDOM } from '../src/vdom/vdom.js';
+import { createElementFromVDOM } from '../src/dom.js';
+import { createVirtualNode } from '../src/vdom/vdom.js';
 import jsdom  from "mocha-jsdom";
 import expect from 'expect';
 

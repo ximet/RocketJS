@@ -1,24 +1,20 @@
-import { setPropertys, addEventListeners } from './propertyService.js'
-
 /** @jsx createVirtualNode */
 export function createVirtualNode(type, props, ...children) {
     return { type, props: props || {}, children };
 }
 
-export const createElementFromVDOM = (virtualNode) => {
-    let element = null;
-
-    if (typeof virtualNode === 'string') {
-        element = document.createTextNode(virtualNode);
+export default class VirtualNode {
+    constructor(tag, props, data, children, text, options) {
+        this.tag = tag;
+        this.props = props;
+        this.data = data;
+        this.children = children;
+        this.text = text;
+        this.options = options;
     }
-    else {
-        element = document.createElement(virtualNode.type);
+}
 
-        setPropertys(element, virtualNode.props);
-        addEventListeners(element, virtualNode.props);
-        virtualNode.children.map(createElementFromVDOM)
-            .forEach(element.appendChild.bind(element));
-    }
 
-    return element;
-};
+export function createTextVNode (value) {
+    return new VirtualNode(undefined, undefined, undefined, undefined, String(value))
+}
