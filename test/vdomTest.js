@@ -1,5 +1,5 @@
 
-import { VirtualNode, createVirtualNode, createTextVirtualNode, clonedVirtualNode, clonedVirtualNodes } from '../src/vdom/vdom.js';
+import { VirtualNode, createVirtualNode, createTextVirtualNode, createEmptyVirtualNode, clonedVirtualNode, clonedVirtualNodes } from '../src/vdom/vdom.js';
 import jsdom  from "mocha-jsdom";
 import expect from 'expect';
 
@@ -17,11 +17,19 @@ describe('Test VDOM', () => {
         });
     });
 
-    describe('Check Virtual Empty node', () => {
+    describe('Check Virtual Empty node from create text VM', () => {
         it('test function check createTextVirtualNode if empty node', () => {
             const vnode = new VirtualNode();
 
             expect(createTextVirtualNode()).toEqual(vnode);
+        });
+    });
+
+    describe('Check Virtual Empty node', () => {
+        it('test function check createEmptyVirtualNode', () => {
+            const vnode = new VirtualNode();
+
+            expect(createEmptyVirtualNode()).toEqual(vnode);
         });
     });
 });
