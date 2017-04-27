@@ -10,10 +10,18 @@ describe('Test VDOM', () => {
     describe('Check Virtual Text Node', () => {
         it('test function check createTextVirtualNode', () => {
             const param = 'testNode';
-            VirtualNode();
+            const vnode = new VirtualNode();
             vnode.text = param;
 
             expect(createTextVirtualNode(param)).toEqual(vnode);
+        });
+    });
+
+    describe('Check Virtual Empty node', () => {
+        it('test function check createTextVirtualNode if empty node', () => {
+            const vnode = new VirtualNode();
+
+            expect(createTextVirtualNode()).toEqual(vnode);
         });
     });
 });
