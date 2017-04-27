@@ -3,7 +3,7 @@ export function createVirtualNode(type, props, ...children) {
     return { type, props: props || {}, children };
 }
 
-export default class VirtualNode {
+export class VirtualNode {
     constructor(tag, props, children, text, isCloned) {
         this.tag = tag;
         this.props = props;
@@ -13,8 +13,14 @@ export default class VirtualNode {
     }
 }
 
+export function createEmptyVirtualNode () {
+    return new VirtualNode()
+}
 
 export function createTextVirtualNode (value) {
+    if (value === void(0)) {
+        return createEmptyVirtualNode();
+    }
     return new VirtualNode(undefined, undefined, undefined, String(value))
 }
 
