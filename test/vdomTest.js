@@ -7,6 +7,19 @@ import expect from 'expect';
 describe('Test VDOM', () => {
     jsdom();
 
+    describe('Check createVirtualNode', () => {
+        it('test function check createVirtualNode', () => {
+            const type = 'node';
+            const vnode = new createVirtualNode(type);
+
+            expect(createVirtualNode(type)).toEqual(vnode);
+            expect(createVirtualNode(type, {})).toEqual(vnode);
+            expect(createVirtualNode(type, '')).toEqual(vnode);
+            expect(createVirtualNode(type, 'props')).toNotEqual(vnode);
+            expect(createVirtualNode(type, {attr: 'checked'})).toNotEqual(vnode);
+        });
+    });
+
     describe('Check Virtual Text Node', () => {
         it('test function check createTextVirtualNode', () => {
             const param = 'testNode';
