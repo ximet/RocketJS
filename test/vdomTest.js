@@ -54,4 +54,18 @@ describe('Test VDOM', () => {
             expect(clone.tag).toEqual(vnode.tag);
         });
     });
+
+    describe('Check array clonedVN', () => {
+        it('test function check clonedVirtualNodes', () => {
+            const tag = 'div';
+            const vnode1 = new VirtualNode();
+            const vnode2 = new VirtualNode(tag);
+            const clone = clonedVirtualNodes([vnode1, vnode2]);
+
+            expect(clone[0].isCloned).toEqual(true);
+            expect(clone[0].tag).toEqual(vnode1.tag);
+            expect(clone[1].tag).toEqual(vnode2.tag);
+            expect(clone[1].tag).toEqual(tag);
+        });
+    });
 });
