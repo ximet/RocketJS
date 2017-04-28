@@ -1,4 +1,3 @@
-
 import { VirtualNode, createVirtualNode, createTextVirtualNode, createEmptyVirtualNode, clonedVirtualNode, clonedVirtualNodes } from '../src/vdom/vdom.js';
 import jsdom  from "mocha-jsdom";
 import expect from 'expect';
@@ -43,6 +42,16 @@ describe('Test VDOM', () => {
             const vnode = new VirtualNode();
 
             expect(createEmptyVirtualNode()).toEqual(vnode);
+        });
+    });
+
+    describe('Check cloneVN', () => {
+        it('test function check clonedVirtualNode', () => {
+            const vnode = new VirtualNode();
+            const clone = clonedVirtualNode(vnode);
+
+            expect(clone.isCloned).toEqual(true);
+            expect(clone.tag).toEqual(vnode.tag);
         });
     });
 });
