@@ -6,7 +6,7 @@ export const getObservers = (observable) => {
   return observable.observers
 }
 
-export const addObservers = (observable, node) => {
+const addObservers = (observable, node) => {
   const length = observable.observers.length;
 
   observable.observers[length] = node;
@@ -17,5 +17,9 @@ export const addObservers = (observable, node) => {
 export default class Observable {
   constructor (instance) {
     this.observers = []
+  }
+
+  addObservers(node) {
+    this.observers = addObservers(this, node);
   }
 }
