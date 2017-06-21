@@ -10,6 +10,8 @@ export const addObservers = (observable, node) => {
   const length = observable.observers.length;
 
   observable.observers[length] = node;
+
+  return observable;
 }
 
 export default class Observable {
