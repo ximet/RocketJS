@@ -1,7 +1,7 @@
 class Observer {
   constructor (instance) {
     this.instance = instance;
-    this.observers = {}
+    this.observers = []
   }
 
   notifyArray (items) {
@@ -10,7 +10,17 @@ class Observer {
     }
   }
 
+
+
   notify () {
-    
+
   }
+}
+
+const hasObservers = (observable) => {
+  return observable.observers && observable.observers.length > 0
+}
+
+const getObservers = (observable) => {
+  return observable.observers
 }
