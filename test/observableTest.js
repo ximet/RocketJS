@@ -26,4 +26,16 @@ describe('Test Observable', () => {
             expect(hasObservers(uncorrectObservable)).toEqual(undefined);
         });
     });
+
+    describe('Check addObservers', () => {
+        it('test function check addObservers', () => {
+            const expectedObservers = [1,2,3,4];
+
+            expect(addObservers(fullObservable, 4).observers).toEqual(expectedObservers);
+            expect(hasObservers(addObservers(correctObservable, 4))).toEqual(true);
+
+            // expect(addObservers(expectedObservers, 4).observers).toNotEqual(expectedObservers);
+
+        });
+    });
 });

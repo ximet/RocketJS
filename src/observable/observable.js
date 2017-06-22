@@ -6,7 +6,7 @@ export const getObservers = (observable) => {
   return observable.observers
 }
 
-const addObservers = (observable, node) => {
+export const addObservers = (observable, node) => {
   const length = observable.observers.length;
 
   observable.observers[length] = node;
