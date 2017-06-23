@@ -8,6 +8,11 @@ describe('Test Observable', () => {
     const fullObservable = {
         observers: [1, 2, 3]
     };
+
+    const observable = {
+        observers: [1, 2, 3, 4]
+    };
+
     const uncorrectObservable = {};
     describe('Check getObservers', () => {
         it('test function check getObservers', () => {
@@ -33,8 +38,7 @@ describe('Test Observable', () => {
 
             expect(addObservers(fullObservable, 4).observers).toEqual(expectedObservers);
             expect(hasObservers(addObservers(correctObservable, 4))).toEqual(true);
-
-            // expect(addObservers(expectedObservers, 4).observers).toNotEqual(expectedObservers);
+            expect(addObservers(observable, 4).observers).toNotEqual(expectedObservers);
 
         });
     });
