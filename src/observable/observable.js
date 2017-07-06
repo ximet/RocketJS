@@ -22,4 +22,12 @@ export default class Observable {
   addObservers(node) {
     this.observers = addObservers(this, node);
   }
+
+  notify (key, value) {
+    const length = this.observers.length;
+
+    for (let i = 0; i < length; i++) {
+      //notify what?
+    }
+  }
 }
