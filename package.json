@@ -1,7 +1,7 @@
 {
-  "name": "VirtualDOM",
+  "name": "rocketjs",
   "version": "0.5.0",
-  "description": "Custom realise VirtualDOM",
+  "description": "Custom library with VDOM",
   "main": "lib/index.js",
   "scripts": {
     "webpack": "rimraf dist && webpack",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/ximet/virtualDOM.git"
   },
   "author": "XIMet",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

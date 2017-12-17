@@ -8,3 +8,4 @@ Task:
 - [ ] Add new functionality
 - [ ] Check perfomance 
 - [ ] Test all code
+- [ ] Update Example
